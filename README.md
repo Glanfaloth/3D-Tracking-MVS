@@ -30,18 +30,26 @@ bash script/demo_fix.sh
 ## Preprocessing 
 - Split video into image frames
 ```
-python src/utils/v2img.py --pathIn=data/0125-0135/CAM1/CAM1.mp4 --pathOut=data/0125-0135/CAM1/img --splitnum=1
+python src/utils/v2img.py
+       --pathIn=data/0125-0135/CAM1/CAM1.mp4
+       --pathOut=data/0125-0135/CAM1/img
+       --splitnum=1
 ```
 - Estimate football pitch homography (size 120m * 90m [ref](https://www.quora.com/What-are-the-official-dimensions-of-a-soccer-field-in-the-FIFA-World-Cup))
 > [FIFA official document](https://img.fifa.com/image/upload/datdz0pms85gbnqy4j3k.pdf)
 
 ```
-python src/utils/computeHomo.py --img=data/0125-0135/RIGHT/img/image0000.jpg --out_dir=data/0125-0135/RIGHT/
+python src/utils/computeHomo.py
+       --img=data/0125-0135/RIGHT/img/image0000.jpg
+       --out_dir=data/0125-0135/RIGHT/
 ```
 
 - Handle moving cameras
 ```
-python src/utils/mov2static.py --calib_file=data/calibration_results/0125-0135/CAM1/calib.txt --img_dir=data/0125-0135/CAM1/img --output_dir=data/0125-0135/CAM1/img_static
+python src/utils/mov2static.py
+       --calib_file=data/calibration_results/0125-0135/CAM1/calib.txt
+       --img_dir=data/0125-0135/CAM1/img
+       --output_dir=data/0125-0135/CAM1/img_static
 ```
 - Convert ground truth/annotation json to text file
 ```
@@ -118,23 +126,41 @@ python src/runTreeMCTracker.py --doreid
 
 ```shell
 # if format <x, y, w, h>
-python src/utils/visualize.py --img_dir=data/0125-0135/RIGHT/img --result_file=output/tracktor/16m_right_prediction.txt 
+python src/utils/visualize.py
+       --img_dir=data/0125-0135/RIGHT/img
+       --result_file=output/tracktor/16m_right_prediction.txt 
 # if format <x1, y1, x2, y2>
-python src/utils/visualize.py --img_dir=data/0125-0135/RIGHT/img --result_file=output/iou/16m_right.txt --xymode
+python src/utils/visualize.py
+       --img_dir=data/0125-0135/RIGHT/img
+       --result_file=output/iou/16m_right.txt
+       --xymode
 # if with team id
-python src/utils/visualize.py --img_dir=data/0125-0135/RIGHT/img --result_file=output/tracktor/16m_right_prediction.txt --reid
+python src/utils/visualize.py
+       --img_dir=data/0125-0135/RIGHT/img
+       --result_file=output/tracktor/16m_right_prediction.txt
+       --reid
 # if 3d mode
-python src/utils/visualize.py --img_dir=data/0125-0135/RIGHT/img --result_file=output/tracktor/RIGHT.txt --calib_file=data/calibration_results/0125-0135/RIGHT/calib.txt  --pitchmode
+python src/utils/visualize.py
+       --img_dir=data/0125-0135/RIGHT/img
+       --result_file=output/tracktor/RIGHT.txt
+       --calib_file=data/calibration_results/0125-0135/RIGHT/calib.txt
+       --pitchmode
 ```
 > visualize 3d tracking result with ground truth and voronoi diagram
 
 ```
-python src/utils/visualize_on_pitch.py --result_file=PATH_TO_TRACKING_RESULT --ground_truth=PATH_TO_GROUND_TRUTH
+python src/utils/visualize_on_pitch.py
+       --result_file=PATH_TO_TRACKING_RESULT
+       --ground_truth=PATH_TO_GROUND_TRUTH
 ```
 > visualize 3d ground truth on camera frames (reprojection)
 
 ```
-python src/utils/visualize_tracab --img_path=PATH_TO_IMAGES --calib_path=PATH_TO_CALIB --gt_path=PATH_TO_TRACAB_GT --output_path=PATH_TO_OUTPUT_VIDEO
+python src/utils/visualize_tracab
+       --img_path=PATH_TO_IMAGES
+       --calib_path=PATH_TO_CALIB
+       --gt_path=PATH_TO_TRACAB_GT
+       --output_path=PATH_TO_OUTPUT_VIDEO
 ```
 - Produce quantitative result
 
@@ -143,8 +169,13 @@ python src/utils/visualize_tracab --img_path=PATH_TO_IMAGES --calib_path=PATH_TO
 python src/motmetrics/apps/eval_motchallenge.py data/0125-0135/ output/tracktor_filtered
 
 # 3d
-python src/utils/eval3d.py --pred=output/pitch/EPTS_3_pitch.txt_EPTS_4_pitch.txt.txt --fixcam  --gt=data/fixedcam/gt_pitch_550.txt
-python src/utils/eval3d.py --fixcam --boxplot
+python src/utils/eval3d.py
+       --pred=output/pitch/EPTS_3_pitch.txt_EPTS_4_pitch.txt.txt
+       --fixcam
+       --gt=data/fixedcam/gt_pitch_550.txt
+python src/utils/eval3d.py
+       --fixcam
+       --boxplot
 ```
 
 <!--
