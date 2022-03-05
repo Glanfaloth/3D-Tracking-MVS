@@ -8,11 +8,11 @@ This repo contains a full pipeline to support 3D position tracking of soccer pla
 
 |3D Tracking|
 |:-------------------------:|
-|![demo](https://github.com/Glanfaloth/3D-Tracking-MVS/blob/main/misc/cam1_right_team.gif)|
+|![demo](https://github.com/Glanfaloth/3D-Tracking-MVS/blob/0bd6d14bb7c3252ad98cf3413380844a5e0ec835/misc/cam1_right_team.gif)|
 
 |Sports Coaching|
 |:-------------------------:|
-|![demo](https://github.com/Glanfaloth/3D-Tracking-MVS/blob/main/misc/cam1_right_team_gt_voronoi.gif)|
+|![demo](https://github.com/Glanfaloth/3D-Tracking-MVS/blob/0bd6d14bb7c3252ad98cf3413380844a5e0ec835/misc/cam1_right_team_gt_voronoi.gif)|
 
 ## Demo
 Check demo scripts as examples
@@ -183,7 +183,7 @@ python src/utils/eval3d.py
 ## Result
 
 > 0125-0135 right moving camera
-```
+```text
 SORT
          IDF1   IDP   IDR  Rcll  Prcn GT MT PT ML   FP   FN IDs   FM   MOTA  MOTP IDt IDa IDm
 RIGHT   58.3% 49.4% 71.3% 83.4% 57.8% 25 15 10  0 3674 1001  27  181  22.0% 0.340   5  23   1
