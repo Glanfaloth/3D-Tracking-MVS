@@ -29,7 +29,7 @@ bash script/demo_fix.sh
 
 ## Preprocessing 
 - Split video into image frames
-```
+```python
 python src/utils/v2img.py
        --pathIn=data/0125-0135/CAM1/CAM1.mp4
        --pathOut=data/0125-0135/CAM1/img
@@ -38,25 +38,25 @@ python src/utils/v2img.py
 - Estimate football pitch homography (size 120m * 90m [ref](https://www.quora.com/What-are-the-official-dimensions-of-a-soccer-field-in-the-FIFA-World-Cup))
 > [FIFA official document](https://img.fifa.com/image/upload/datdz0pms85gbnqy4j3k.pdf)
 
-```
+```python
 python src/utils/computeHomo.py
        --img=data/0125-0135/RIGHT/img/image0000.jpg
        --out_dir=data/0125-0135/RIGHT/
 ```
 
 - Handle moving cameras
-```
+```python
 python src/utils/mov2static.py
        --calib_file=data/calibration_results/0125-0135/CAM1/calib.txt
        --img_dir=data/0125-0135/CAM1/img
        --output_dir=data/0125-0135/CAM1/img_static
 ```
 - Convert ground truth/annotation json to text file
-```
+```python
 python src/utils/json2txt.py --jsonfile=data/0125-0135/0125-0135.json
 ```
 
-<!--
+
 - After processing, data folder structure should be like:
 ```
 data
@@ -80,7 +80,7 @@ data
 
 - [Download preprocessed data](https://polybox.ethz.ch/index.php/s/CvcT5pxOY90bpIF)
 > only include homography and config files, large image folder not included
--->
+
 ## Single-camera tracking
 - Object Detector: frcnn_fpn
 Train object detector and generate detection results with [this](https://colab.research.google.com/drive/18CI160namP1-sF82H6sgrDycvHZ1PbPm?usp=sharing) Google Colab notebook. [[pretrained model](https://polybox.ethz.ch/index.php/s/SrBn2DtKEJQaWFg?path=%2Ftrained_frcnn_fpn)]
@@ -88,18 +88,18 @@ Train object detector and generate detection results with [this](https://colab.r
 Put trainded object detector ```model_epoch_50.model``` into  ```src/tracking_wo_bnw/output/faster_rcnn_fpn_training_soccer/```.
 Put data and calibration results into ```src/tracking_wo_bnw/```.
 
-```
+```python
 cd src/tracking_wo_bnw
 python experiments/scripts/test_tracktor.py
 ```
 - Run ReID(team id) model
-```
+```python
 python src/team_classification/team_svm.py PATH_TO_TRACKING_RESULT PATH_TO_IMAGES
 ```
 - Convert tracking results to coordinates on the pitch
 > Equation to find the intersection of a line with a plane ([ref](https://math.stackexchange.com/questions/2041296/algorithm-for-line-in-plane-intersection-in-3d))
 
-```shell
+```python
 python src/calib.py --calib_path=PATH_TO_CALIB --res_path=PATH_TO_TRACKING_RESULT --xymode --reid
 
 # also plot the camera positions for fixed cameras
@@ -108,7 +108,7 @@ python src/calib.py --calib_path=PATH_TO_CALIB --res_path=PATH_TO_TRACKING_RESUL
 ## Across-camera association
 
 - Run two-cam tracker
-```
+```python
 python src/runMCTRacker.py 
 
 # add team id constraint
@@ -116,7 +116,7 @@ python src/runMCTRacker.py --doreid
 ```
 
 - Run multi-cam tracker (e.g. 8 cams)
-```
+```python
 python src/runTreeMCTracker.py --doreid
 ```
 
@@ -125,7 +125,7 @@ python src/runTreeMCTracker.py --doreid
 - Produce quatitative results (visualize results)
 > visualize 2d bounding box
 
-```shell
+```python
 # if format <x, y, w, h>
 python src/utils/visualize.py
        --img_dir=data/0125-0135/RIGHT/img
@@ -149,14 +149,14 @@ python src/utils/visualize.py
 ```
 > visualize 3d tracking result with ground truth and voronoi diagram
 
-```
+```python
 python src/utils/visualize_on_pitch.py
        --result_file=PATH_TO_TRACKING_RESULT
        --ground_truth=PATH_TO_GROUND_TRUTH
 ```
 > visualize 3d ground truth on camera frames (reprojection)
 
-```
+```python
 python src/utils/visualize_tracab
        --img_path=PATH_TO_IMAGES
        --calib_path=PATH_TO_CALIB
@@ -165,7 +165,7 @@ python src/utils/visualize_tracab
 ```
 - Produce quantitative result
 
-```
+```python
 # 2d <frame id, objid, x, y, w, h, .., ...>
 python src/motmetrics/apps/eval_motchallenge.py data/0125-0135/ output/tracktor_filtered
 
@@ -179,7 +179,7 @@ python src/utils/eval3d.py
        --boxplot
 ```
 
-<!--
+
 ## Result
 
 > 0125-0135 right moving camera
@@ -203,7 +203,6 @@ CAM1    49.3% 39.4% 65.9% 69.4% 41.5% 22  6 15  1 2871  899  17  146 -29.0% 0.34
 OVERALL 63.7% 56.7% 72.6% 80.5% 63.0% 47 25 21  1 4247 1747  38  359  32.7% 0.328  17  22   1
 
 ```
--->
 
 ## Acknowledgement
 We would like to thank the following Github repos or softwares:
