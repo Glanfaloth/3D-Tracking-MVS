@@ -1,10 +1,9 @@
 # 3D Player Tracking with Multi-View Stream
-Project for 3DV 2021 Spring @ ETH Zurich [[Report Link](./document/3dtracking_report_2021.pdf)] <br/>
+Project for 3DV 2021 Spring @ ETH Zurich [[Report Link](./document/3dtracking_report_2021.pdf)]
 
-<br/>
-This repo contains a full pipeline to support 3D position tracking of soccer players, with multi-view calibrated moving/fixed video sequences as inputs.  <br/>
-- In single-camera tracking stage, Tracktor++ is used to get 2D positions. <br/>
-- In multi-camera tracking stage, 2D positions are projected into 3D positions. Then across-camera association is achieved as an optimization problem with spatial, temporal and visual constraints. <br/>
+This repo contains a full pipeline to support 3D position tracking of soccer players, with multi-view calibrated moving/fixed video sequences as inputs.
+- In single-camera tracking stage, Tracktor++ is used to get 2D positions.
+- In multi-camera tracking stage, 2D positions are projected into 3D positions. Then across-camera association is achieved as an optimization problem with spatial, temporal and visual constraints.
 - In the end, visualization in 2D, 3D and a voronoi visualization for sports coaching purpose are provided.
 
 3D Tracking            
@@ -75,10 +74,10 @@ data
 > only include homography and config files, large image folder not included
 -->
 ## Single-camera tracking
-- Object Detector: frcnn_fpn <br/>
+- Object Detector: frcnn_fpn
 Train object detector and generate detection results with [this](https://colab.research.google.com/drive/18CI160namP1-sF82H6sgrDycvHZ1PbPm?usp=sharing) Google Colab notebook. [[pretrained model](https://polybox.ethz.ch/index.php/s/SrBn2DtKEJQaWFg?path=%2Ftrained_frcnn_fpn)]
-- Run Tracktor++ <br/>
-Put trainded object detector ```model_epoch_50.model``` into  ```src/tracking_wo_bnw/output/faster_rcnn_fpn_training_soccer/```. <br/>
+- Run Tracktor++
+Put trainded object detector ```model_epoch_50.model``` into  ```src/tracking_wo_bnw/output/faster_rcnn_fpn_training_soccer/```.
 Put data and calibration results into ```src/tracking_wo_bnw/```. 
 ```
 cd src/tracking_wo_bnw
@@ -175,7 +174,7 @@ OVERALL 63.7% 56.7% 72.6% 80.5% 63.0% 47 25 21  1 4247 1747  38  359  32.7% 0.32
 -->
 
 ## Acknowledgement
-We would like to thank the following Github repos or softwares: <br/>
+We would like to thank the following Github repos or softwares:
 - [Supervisely](https://app.supervise.ly/init)
 - [Tracktor++](https://github.com/phil-bergmann/tracking_wo_bnw)
 - [IoU tracker](https://github.com/GBJim/iou_tracker)
