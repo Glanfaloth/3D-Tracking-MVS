@@ -6,13 +6,9 @@ This repo contains a full pipeline to support 3D position tracking of soccer pla
 - In multi-camera tracking stage, 2D positions are projected into 3D positions. Then across-camera association is achieved as an optimization problem with spatial, temporal and visual constraints.
 - In the end, visualization in 2D, 3D and a voronoi visualization for sports coaching purpose are provided.
 
-|3D Tracking|
-|:-------------------------:|
-|![demo](https://github.com/Glanfaloth/3D-Tracking-MVS/blob/0bd6d14bb7c3252ad98cf3413380844a5e0ec835/misc/cam1_right_team.gif)|
-
-|Sports Coaching|
-|:-------------------------:|
-|![demo](https://github.com/Glanfaloth/3D-Tracking-MVS/blob/0bd6d14bb7c3252ad98cf3413380844a5e0ec835/misc/cam1_right_team_gt_voronoi.gif)|
+|3D Tracking|Sports Coaching|
+|:-------------------------:|:-------------------------:|
+|![demo](https://github.com/Glanfaloth/3D-Tracking-MVS/blob/main/misc/cam1_right_team.gif)|![demo](https://github.com/Glanfaloth/3D-Tracking-MVS/blob/main/misc/cam1_right_team_gt_voronoi.gif)|
 
 ## Demo
 Check demo scripts as examples
