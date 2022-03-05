@@ -9,7 +9,7 @@ This repo contains a full pipeline to support 3D position tracking of soccer pla
 
 3D Tracking            |  Sports Coaching 
 :-------------------------:|:-------------------------:
-![demo](misc/cam1_right_team.gif) | ![demo](misc/cam1_right_team_gt_voronoi.gif)
+![demo](https://github.com/Glanfaloth/3D-Tracking-MVS/blob/main/misc/cam1_right_team.gif) | ![demo](https://github.com/Glanfaloth/3D-Tracking-MVS/blob/main/misc/cam1_right_team_gt_voronoi.gif)
 
 ## Demo
 Check demo scripts as examples
