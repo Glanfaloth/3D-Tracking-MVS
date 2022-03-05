@@ -6,13 +6,13 @@ This repo contains a full pipeline to support 3D position tracking of soccer pla
 - In multi-camera tracking stage, 2D positions are projected into 3D positions. Then across-camera association is achieved as an optimization problem with spatial, temporal and visual constraints.
 - In the end, visualization in 2D, 3D and a voronoi visualization for sports coaching purpose are provided.
 
-3D Tracking            
-:-------------------------:
-![demo](https://github.com/Glanfaloth/3D-Tracking-MVS/blob/main/misc/cam1_right_team.gif)
+|3D Tracking|
+|:-------------------------:|
+|![demo](https://github.com/Glanfaloth/3D-Tracking-MVS/blob/main/misc/cam1_right_team.gif)|
 
-Sports Coaching 
-:-------------------------:
- ![demo](https://github.com/Glanfaloth/3D-Tracking-MVS/blob/main/misc/cam1_right_team_gt_voronoi.gif)
+|Sports Coaching|
+|:-------------------------:|
+|![demo](https://github.com/Glanfaloth/3D-Tracking-MVS/blob/main/misc/cam1_right_team_gt_voronoi.gif)|
 
 ## Demo
 Check demo scripts as examples
@@ -86,7 +86,8 @@ data
 Train object detector and generate detection results with [this](https://colab.research.google.com/drive/18CI160namP1-sF82H6sgrDycvHZ1PbPm?usp=sharing) Google Colab notebook. [[pretrained model](https://polybox.ethz.ch/index.php/s/SrBn2DtKEJQaWFg?path=%2Ftrained_frcnn_fpn)]
 - Run Tracktor++
 Put trainded object detector ```model_epoch_50.model``` into  ```src/tracking_wo_bnw/output/faster_rcnn_fpn_training_soccer/```.
-Put data and calibration results into ```src/tracking_wo_bnw/```. 
+Put data and calibration results into ```src/tracking_wo_bnw/```.
+
 ```
 cd src/tracking_wo_bnw
 python experiments/scripts/test_tracktor.py
